@@ -10,6 +10,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -33,7 +34,8 @@ public interface ProductService {
                                    @Field("price")String price,
                                    @Field("desc")String desc);
 
-    @DELETE("person/delete")
-    Call<PersonItem> deleteProduct(@Path("id") int id);
+    @FormUrlEncoded
+    @HTTP(method = "DELETE", path = ("person/delete/"), hasBody = true)
+    Call<PersonItem> deleteProduct(@Field("id") int id);
 
 }
